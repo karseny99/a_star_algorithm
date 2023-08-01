@@ -62,6 +62,7 @@ function Cell(i, j) {
             fill(40);
             color = 0;
         }
+        stroke(150);
         // noStroke();
         rect(this.x * w, this.y * h, w - 1, h - 1);
     }
@@ -82,7 +83,7 @@ function Cell(i, j) {
 }
 
 function setup() {
-    createCanvas(900, 900);
+    createCanvas(900, 900, 0);
     console.log("A*");
 
     w = width / column;
@@ -97,7 +98,7 @@ function setup() {
             grid[i][j] = new Cell(i, j);
         }
     }
-
+    
     for(var i = 0; i < column; i++) {
         for(var j = 0; j < rows; j++) {
             grid[i][j].addNeighbors(grid);
@@ -111,7 +112,7 @@ function setup() {
     start.wall = false;
     
     openQueue.push(start);
-
+    
 }
 
 
@@ -204,5 +205,6 @@ function draw() {
             path[i].show(color(125, 0, 125));
         }
     }
+
 
 }
