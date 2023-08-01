@@ -1,4 +1,4 @@
-var black_chance = 0.4;
+var black_chance = 0.2;
 var column = 80;
 var rows = 80;
 
@@ -57,10 +57,11 @@ function Cell(i, j) {
     this.neighbors = [];
 
     this.show = function(color) {
+        fill(color);
         if(this.wall) {
+            fill(40);
             color = 0;
         }
-        fill(color);
         // noStroke();
         rect(this.x * w, this.y * h, w - 1, h - 1);
     }
@@ -110,7 +111,7 @@ function setup() {
     start.wall = false;
     
     openQueue.push(start);
-    // console.log(grid);
+
 }
 
 
@@ -175,16 +176,15 @@ function draw() {
 
     for(var i = 0; i < column; i++) {
         for(var j = 0; j < rows; j++) {
-            grid[i][j].show(color(255));
+            grid[i][j].show(color(180));
         }
     }
 
     for(var i = 0; i < visited.length; ++i) {
-        visited[i].show(color(255, 0, 0));
+        visited[i].show(color(58, 134, 255));
     }
 
     for(var i = 0; i < openQueue.length; ++i) {
-        
         openQueue[i].show(color(0, 255, 0));
     }
 
@@ -197,7 +197,7 @@ function draw() {
     path.push(cur);
     if(current === end) {
         for(var i = 0; i < path.length; ++i) {
-            path[i].show(color(0, 0, 255));
+            path[i].show(color(251, 86, 7));
         }
     } else {
         for(var i = 0; i < path.length; ++i) {
@@ -205,8 +205,4 @@ function draw() {
         }
     }
 
-    
-
-
-    // background(0);
 }
